@@ -21,6 +21,11 @@ public class OrdersController {
     public String helloOrders() {
         return "Hello from Orders Service";
     }
+    @PostMapping("/create-order")
+    public ResponseEntity<OrderRequestDto> createOrder(@RequestBody OrderRequestDto orderRequestDto) {
+        OrderRequestDto orderRequestDto1 = orderService.createOrder(orderRequestDto);
+        return ResponseEntity.ok(orderRequestDto1);
+    }
 
 //    @PostMapping("/create-order")
 //    public ResponseEntity<OrderRequestDto> createOrder(@RequestBody OrderRequestDto orderRequestDto) {
