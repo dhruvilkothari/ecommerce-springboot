@@ -28,7 +28,7 @@ public class ProductController {
     public String fetchFromOrdersService(){
         ServiceInstance orderInstance = discoveryClient.getInstances("order-service").getFirst();
         return restClient.get()
-                .uri(orderInstance.getUri()+"/api/v1/orders/helloOrders").retrieve().body(String.class);
+                .uri(orderInstance.getUri()+"/orders/core/helloOrders").retrieve().body(String.class);
     }
 
     @GetMapping
