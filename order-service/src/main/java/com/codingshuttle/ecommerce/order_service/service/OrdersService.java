@@ -32,12 +32,13 @@ public class OrdersService {
 
 
 
-        @Retry(name = "inventoryRetry", fallbackMethod = "createOrderFallback")
+//        @Retry(name = "inventoryRetry", fallbackMethod = "createOrderFallback")
     //@CircuitBreaker(name = "inventoryCircuitBreaker", fallbackMethod = "createOrderFallback")
 //    @RateLimiter(name = "inventoryRateLimiter", fallbackMethod = "createOrderFallback")
     public OrderRequestDto createOrder(OrderRequestDto orderRequestDto) {
         log.info("Calling the createOrder method");
-        Double totalPrice = inventoryOpenFeignClient.reduceStocks(orderRequestDto);
+//        Double totalPrice = inventoryOpenFeignClient.reduceStocks(orderRequestDto);
+            Double totalPrice = 0D;
 
         Orders orders = modelMapper.map(orderRequestDto, Orders.class);
         for(OrderItem orderItem: orders.getItems()) {

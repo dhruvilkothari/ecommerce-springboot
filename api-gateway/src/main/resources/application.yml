@@ -13,6 +13,10 @@ spring:
           filters:
             - StripPrefix=2
         #            - RedirectTo=302, http://codingshuttle.com
+            - name: LoggingOrdersFilter
+            - name: AuthenticationGatewayFilterFactory
+              args:
+                isEnabled: true
         - id: inventory-service
           uri: lb://INVENTORY-SERVICE
           predicates:
